@@ -1,0 +1,77 @@
+{
+  "name": "time-tracker",
+  "version": "0.1.0",
+  "productName": "TimerTracker",
+  "author": "John Aondover Sokpo",
+  "description": "A Time Tracker App that tracks your work time.",
+  "main": "build/electron.js",
+  "private": true,
+  "dependencies": {
+    "moment": "^2.21.0",
+    "moment-timezone": "^0.5.14",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.1",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "react-start": "BROWSER=none react-scripts start",
+    "start": "npm run electron",
+    "pack": "build --dir",
+    "release": "build",
+    "dist": "PROD=true npm run build && build"
+  },
+  "build": {
+    "appId": "com.electron.electron-with-create-react-app",
+    "directories": {
+      "app":"./build",
+      "output":"./dist",
+      "buildResources":"build"
+    },
+    "files": [
+      "*/**"
+    ],
+    "mac": {
+      "category": "public.app-category.business",
+      "icon":"assets/build.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "dmg":{
+      "contents":[{
+        "x":110,
+        "y":150
+      },{
+        "x":240,
+        "y":150,
+        "type":"link",
+        "path":"/Applications"
+      }]
+    },
+    "win":{
+      "icon":"assets/icon.ico",
+      "target":"nsis"
+    },
+    "nsis":{
+      "allowToChangeInstallationDirectory":true,
+      "oneClick":false,
+      "perMachine":true
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.5.1",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "redux-mock-store": "^1.5.1",
+    "wait-on": "^2.1.0"
+  }
+}
